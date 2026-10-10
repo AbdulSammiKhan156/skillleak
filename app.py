@@ -72,6 +72,32 @@ table.sl-matrix td {padding:7px 8px; background:#fcfcfb; border-top:1px solid #e
 .quote.bad {border-left-color:#d03b3b; background:#fdf3f3; text-decoration: line-through;}
 .reason {color:#52514e; font-size:.8rem; margin:0 0 .6rem .8rem;}
 .replay {background:#fff7e6; border:1px solid #fab219; border-radius:8px; padding:.5rem .8rem; margin-bottom:.8rem;}
+.sl-card {color:#1f1f1d; transition: transform .15s, box-shadow .15s;}
+.sl-card:hover {transform: translateY(-3px); box-shadow: 0 6px 18px rgba(24,79,149,.15);}
+.sl-banner {background: linear-gradient(120deg,#0f3b73 0%,#2a78d6 60%,#3fb3a8 100%); color:#fff;
+  border-radius:16px; padding:1.3rem 1.6rem; margin-bottom:1rem; box-shadow:0 8px 24px rgba(15,59,115,.25);}
+.sl-banner h1 {color:#fff; margin:0; font-size:2.2rem; padding:0;}
+.sl-banner .tag {font-size:1.15rem; font-weight:600; margin:.3rem 0 .4rem 0; color:#fff;}
+.sl-banner .sub {font-size:.9rem; opacity:.9; color:#fff;}
+.sl-pills span {display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35);
+  border-radius:999px; padding:2px 10px; margin:.5rem .35rem 0 0; font-size:.8rem; color:#fff;}
+.spot {border:2px solid #d03b3b; border-radius:14px; padding:1rem 1.2rem; background:#fffafa; color:#1f1f1d;
+  margin:.6rem 0 1rem 0; animation: pop .5s ease-out;}
+@keyframes pop {from {opacity:0; transform: scale(.97);} to {opacity:1; transform: scale(1);}}
+.spot h3 {margin:0 0 .5rem 0; color:#9b2222; font-size:1.25rem; padding:0;}
+.spot .cols {display:grid; grid-template-columns: 1fr 1fr; gap:.8rem;}
+@media (max-width: 700px) {.spot .cols {grid-template-columns: 1fr;}}
+.spot .box {border-radius:10px; padding:.6rem .8rem; font-size:.92rem;}
+.spot .promise {background:#e3f5e3; border-left:5px solid #0b8a0b;}
+.spot .evid {background:#fbe3e3; border-left:5px solid #d03b3b;}
+.spot .lbl {font-size:.75rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#52514e;}
+.ladder {display:flex; gap:6px; margin:.9rem 0 .3rem 0;}
+.ladder div {flex:1; text-align:center; border-radius:8px; padding:.45rem .2rem; font-size:.78rem; font-weight:600;
+  background:#efeeea; color:#52514e; position:relative; animation: rise .6s ease-out both;}
+.ladder div.p {background:#0b8a0b; color:#fff;} .ladder div.e {background:#d03b3b; color:#fff;}
+.ladder div.g {background:repeating-linear-gradient(45deg,#fbe3e3,#fbe3e3 6px,#fff 6px,#fff 12px); color:#9b2222;}
+@keyframes rise {from {opacity:0; transform: translateY(10px);} to {opacity:1; transform: translateY(0);}}
+.spot .foot {font-size:.82rem; color:#52514e; margin-top:.4rem;}
 .disclaimer {background:#eef4fc; border-radius:8px; padding:.45rem .8rem; font-size:.85rem; color:#184f95; margin-bottom:.6rem;}
 </style>
 """, unsafe_allow_html=True)
@@ -145,10 +171,13 @@ with st.sidebar:
 # Header
 # ---------------------------------------------------------------------------
 st.markdown("""
-<div class="sl-hero"><h1>🔎 SkillLeak AI</h1>
-<p><b>Find curriculum gaps. Verify assessment alignment. Prepare graduates for real-world engineering.</b><br>
-Curriculum intelligence for Pakistani engineering departments - a decision-support tool for faculty,
-not a replacement for faculty judgement or official accreditation review.</p></div>
+<div class="sl-banner"><h1>🔎 SkillLeak AI</h1>
+<div class="tag">A course outcome is a promise. An assessment is evidence. SkillLeak checks whether they match.</div>
+<div class="sub">Curriculum intelligence for Pakistani engineering departments - decision support for faculty,
+not a replacement for faculty judgement or official accreditation review.</div>
+<div class="sl-pills"><span>📜 CLO ↔ exam alignment</span><span>🤝 two independent AI raters</span>
+<span>✔ every claim quote-verified</span><span>📊 attainment validity</span><span>🏭 industry skill gaps</span></div>
+</div>
 """, unsafe_allow_html=True)
 
 if ss.run and ss.replay:
@@ -184,10 +213,100 @@ def _opt_to_level(v) -> int | None:
     return None
 
 
+def render_spotlight(run) -> None:
+    """Headline finding card: the most severe CLO mismatch, promise vs evidence, on a C1-C6 ladder."""
+    al = (run or {}).get("alignment")
+    if not al:
+        return
+    res = analyze(al)
+    bad = [r for r in res["rows"] if r["finding"] == "Potential mismatch" and r["target"]]
+    if not bad:
+        n = res["summary"]["clos"]
+        st.success(f"✅ No potential CLO–assessment mismatch detected across {n} CLOs in these documents.")
+        return
+    r = max(bad, key=lambda x: (x["target"] or 0) - (x["max_demand"] or 0))
+    maps = [m for m in res["mapping_rows"] if m["clo_id"] == r["id"] and m["included"] and m["quote_verified"]]
+    ev = min(maps, key=lambda m: m["demand"] or 9) if maps else None
+    lo = (ev["demand"] if ev else r["max_demand"]) or 1
+    cells = []
+    for k in range(1, 7):
+        cls = "p" if k == r["target"] else ("e" if k == lo else ("g" if lo < k < r["target"] else ""))
+        tag = " ← promised" if k == r["target"] else (" ← tested" if k == lo else "")
+        cells.append(f"<div class='{cls}' style='animation-delay:{k * 0.08:.2f}s'>C{k} {BLOOM[k]}{tag}</div>")
+    share = r.get("marks_share_at_level")
+    quote = html.escape(ev["quote"]) if ev else "-"
+    where = html.escape(f"{ev['item_label']} · {fmt_marks(ev['marks'])} marks") if ev else ""
+    st.markdown(f"""<div class='spot'><h3>⚠️ Headline finding: {html.escape(r['id'])} promises
+{level_name(r['target'])}, but the exam tests {level_name(lo)}</h3>
+<div class='cols'><div class='box promise'><div class='lbl'>📜 The promise (course file)</div>
+{html.escape(r['statement'])}<br><b>Stated level: {level_name(r['target'])}</b></div>
+<div class='box evid'><div class='lbl'>📝 The evidence (exam paper, quote verified)</div>
+“{quote}”<br><b>{where} · rated {level_name(lo)}</b></div></div>
+<div class='ladder'>{''.join(cells)}</div>
+<div class='foot'>Gap of {r['target'] - lo} cognitive level(s). Aligned-mark share for this CLO:
+<b>{f"{share:.0%}" if share is not None else "-"}</b>. Two AI ratings must both fall below the CLO level to raise
+this flag. Open <b>② CLO Alignment</b> to inspect all CLOs and generate an aligned exam item,
+or <b>③ Attainment</b> to see whether reported marks still say this CLO was achieved.</div></div>""",
+                unsafe_allow_html=True)
+
+
+def run_live_demo() -> None:
+    """One click: sample course file + public job postings, all checks on, real AI calls."""
+    with st.status("Running the live demo on the sample course file...", expanded=True) as status:
+        bar = st.progress(0.0)
+
+        def progress(msg, frac):
+            status.write(msg)
+            bar.progress(frac)
+        try:
+            run = run_scan(load_sample_documents("public"), cfg, progress, do_alignment=True, do_industry=True,
+                           verify=True)
+            run["meta"]["input"] = "One-click demo / sample course / " + JOB_SETS["public"]
+            ss.run, ss.run_path, ss.replay = run, save_run(run), False
+            status.update(label="Live analysis complete", state="complete", expanded=False)
+            st.toast("Analysis complete - headline finding below", icon="🔎")
+        except Exception as exc:
+            status.update(label="Analysis failed", state="error")
+            st.error(safe_error(exc))
+            st.caption("Tip: use 'Test key & list models' in the sidebar, try again, or load a saved scan.")
+
+
+QC_PRESETS = {
+    "🧠 Recall question": ("Diagnose and resolve common connectivity faults in small routed and switched networks.",
+                          "C4 Analyze", "List the steps of the bottom-up troubleshooting approach."),
+    "🔧 Real diagnosis task": ("Diagnose and resolve common connectivity faults in small routed and switched networks.",
+                              "C4 Analyze",
+                              "PC1 (192.168.1.10/24, gateway 192.168.1.254) cannot ping the server at 10.0.0.5, but "
+                              "PC2 on the same switch can. Using the show ip interface brief and show running-config "
+                              "outputs in Figure 3, identify the fault, justify your diagnosis from the evidence, and "
+                              "give the commands that fix it."),
+    "⚡ Circuits example": ("Design and evaluate a first-order RC filter for a given cutoff frequency.", "C6 Create",
+                           "Define cutoff frequency."),
+}
+
+
+def _apply_preset(name: str) -> None:
+    c, lvl, q = QC_PRESETS[name]
+    ss["qc_clo"], ss["qc_lvl"], ss["qc_q"] = c, lvl, q
+
+
 # ---------------------------------------------------------------------------
 # Tab 1 - documents and scan
 # ---------------------------------------------------------------------------
 with tab_docs:
+    d1, d2 = st.columns([2, 3], vertical_alignment="center")
+    with d1:
+        if st.button("▶ Run the live demo", type="primary", disabled=not api_key, key="demo_btn",
+                     help="Sample EE-357 course file + 4 public Pakistani job postings. Every step is a real AI call.",
+                     width="stretch"):
+            run_live_demo()
+    d2.markdown("**New here? One click.** Analyses a sample course file (CLOs, labs, exams) against real "
+                "Pakistani job postings using live AI - about a minute. Or scroll down to use your own documents.")
+    if ss.run and not ss.replay:
+        render_spotlight(ss.run)
+    elif ss.run and ss.replay:
+        render_spotlight(ss.run)
+        st.caption("⏪ Spotlight from a saved scan (see banner above).")
     st.markdown("""
 <div class="sl-cards">
 <div class="sl-card"><b>1 · The problem</b>Course files can list CLOs at one cognitive level while exams test a lower one,
@@ -201,14 +320,18 @@ scores are computed by transparent rules, not by the AI.</div>
 and students get a self-practice plan.</div>
 </div>""", unsafe_allow_html=True)
 
-    with st.expander("⚡ Quick check - type any CLO and exam question and see if they match", expanded=False):
+    with st.expander("⚡ Quick check - type any CLO and exam question and see if they match", expanded=True):
+        ss.setdefault("qc_clo", QC_PRESETS["🧠 Recall question"][0])
+        ss.setdefault("qc_lvl", QC_PRESETS["🧠 Recall question"][1])
+        ss.setdefault("qc_q", QC_PRESETS["🧠 Recall question"][2])
+        pc = st.columns(len(QC_PRESETS) + 1)
+        pc[0].caption("Try an example:")
+        for i, name in enumerate(QC_PRESETS):
+            pc[i + 1].button(name, key=f"qc_pre_{i}", on_click=_apply_preset, args=(name,), width="stretch")
         q1, q2 = st.columns([3, 1])
-        qc_clo = q1.text_input("CLO", value="Diagnose and resolve common connectivity faults in small routed and "
-                                             "switched networks.", key="qc_clo")
-        qc_lvl = q2.selectbox("Stated level", ["infer"] + [f"C{i} {BLOOM[i]}" for i in range(1, 7)], index=4,
-                              key="qc_lvl")
-        qc_q = st.text_area("Exam question / task", value="List the steps of the bottom-up troubleshooting approach.",
-                            height=70, key="qc_q")
+        qc_clo = q1.text_input("CLO", key="qc_clo")
+        qc_lvl = q2.selectbox("Stated level", ["infer"] + [f"C{i} {BLOOM[i]}" for i in range(1, 7)], key="qc_lvl")
+        qc_q = st.text_area("Exam question / task", height=70, key="qc_q")
         if st.button("Check alignment", disabled=not (api_key and qc_clo.strip() and qc_q.strip()), key="qc_go"):
             with st.spinner("Two independent AI raters are reading the question..."):
                 try:
@@ -399,6 +522,7 @@ with tab_clo:
                         unsafe_allow_html=True)
             if al.get("course"):
                 st.markdown(f"**Course:** {html.escape(al['course'])}")
+            render_spotlight(run)
             k = st.columns(6)
             k[0].metric("CLOs detected", sm["clos"])
             k[1].metric("Have evidence", sm["with_evidence"], help="CLOs with at least one verified mapped assessment item.")
