@@ -1,0 +1,140 @@
+{
+  "rater": "keyword",
+  "label": "Keyword baseline (first Bloom verb)",
+  "per_level": 20,
+  "seed": 7,
+  "source": "BloomNet dataset (github.com/macabdul9/BloomNet, MIT licence), 600 questions, 100 per level",
+  "created_at": "2026-10-10T04:14:35",
+  "n": 120,
+  "answered": 120,
+  "accuracy": 0.6333333333333333,
+  "within_one": 0.7666666666666667,
+  "macro_f1": 0.648417698202181,
+  "confusion": [
+    [
+      15,
+      4,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      3,
+      15,
+      2,
+      0,
+      0,
+      0
+    ],
+    [
+      2,
+      3,
+      14,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      11,
+      1,
+      8,
+      0,
+      0
+    ],
+    [
+      2,
+      5,
+      1,
+      0,
+      11,
+      1
+    ],
+    [
+      0,
+      5,
+      1,
+      0,
+      1,
+      13
+    ]
+  ],
+  "examples": [
+    {
+      "text": "How much time did he took to build a house",
+      "gold": 1,
+      "pred": 6
+    },
+    {
+      "text": "Draw the block diagram of the central processing unit",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "How many kilometers from your home to the university",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "How many instructions in the instruction set of RISC computer?",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "Draw the basic outline of a page of notes using the Cornell Method?",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "Tell in your own words the beginning of the book.",
+      "gold": 2,
+      "pred": 1
+    },
+    {
+      "text": "State in your own words what the author means when he says",
+      "gold": 2,
+      "pred": 1
+    },
+    {
+      "text": "Determine the author\u2019s point of view",
+      "gold": 2,
+      "pred": 3
+    },
+    {
+      "text": "State in your own words where in the library to find previous issues of journals that are no longer in the display racks.",
+      "gold": 2,
+      "pred": 1
+    },
+    {
+      "text": "Use the E-pH or Pourbaix diagram of Cr to determine the control current and potential for the anodic protection of a S43000 stainless steel vessel.",
+      "gold": 2,
+      "pred": 3
+    },
+    {
+      "text": "Choose a country that does not compete at the Olympics and explain why that country is not an Olympic member.",
+      "gold": 3,
+      "pred": 2
+    },
+    {
+      "text": "Categorise the pictures and add them to the wall display.",
+      "gold": 3,
+      "pred": 4
+    },
+    {
+      "text": "What would you do if a heavy growth of bacteria had occurred",
+      "gold": 3,
+      "pred": 1
+    },
+    {
+      "text": "Draw 3 pictures showing the beginning, middle and ending of the story.",
+      "gold": 3,
+      "pred": 2
+    },
+    {
+      "text": "What questions would you ask if . . .?",
+      "gold": 3,
+      "pred": 1
+    }
+  ]
+}

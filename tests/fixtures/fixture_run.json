@@ -1,0 +1,516 @@
+{
+  "meta": {
+    "created_at": "2026-10-10T04:19:22",
+    "model": "Google Gemini / FAKE-TEST-FIXTURE",
+    "documents_hash": "91dcf2ed12ee",
+    "quotes_total": 27,
+    "quotes_rejected": 3,
+    "analyses": [
+      "alignment",
+      "industry"
+    ],
+    "input": "TEST FIXTURE (fake model replies) - not a real analysis"
+  },
+  "job_family": "Entry-level network engineering",
+  "documents": [
+    {
+      "doc_id": "SYL1",
+      "name": "01_syllabus.md",
+      "category": "syllabus",
+      "text": "SYNTHETIC DEMO DATA - written for the SkillLeak AI demo in the style of a Pakistani OBE course outline. Not a real university course.\n\n# Course Outline: EE-357 Computer Communication Networks\nDepartment of Electrical Engineering - BE Electrical (Telecom), 6th Semester\nCredit Hours: 3 + 1 (Theory + Lab)\n\n## Course Description\nThis course introduces the architecture, protocols and design principles of computer networks. Students study the layered model of communication, IP addressing, routing and switching, transport protocols, application-layer services and the fundamentals of network security.\n\n## Course Learning Outcomes (CLOs)\nOn successful completion of this course, students will be able to:\n\n| CLO | Statement | Taxonomy Level | PLO |\n|---|---|---|---|\n| CLO-1 | Explain the functions of each layer of the OSI and TCP/IP reference models. | C2 (Understand) | PLO-1 Engineering Knowledge |\n| CLO-2 | Design IPv4 addressing schemes using subnetting and VLSM. | C3 (Apply) | PLO-3 Design/Development of Solutions |\n| CLO-3 | Configure static and dynamic routing (OSPF) and VLAN-based switching on network devices. | C3 (Apply) | PLO-5 Modern Tool Usage |\n| CLO-4 | Describe the operation of TCP, UDP, DNS and DHCP. | C2 (Understand) | PLO-1 Engineering Knowledge |\n| CLO-5 | Diagnose and resolve common connectivity faults in small routed and switched networks. | C4 (Analyze) | PLO-2 Problem Analysis |\n| CLO-6 | Describe basic network security mechanisms including firewalls and access control lists. | C2 (Understand) | PLO-1 Engineering Knowledge |\n\n## Weekly Lecture Plan\n- Week 1: Introduction to networks, topologies, OSI and TCP/IP models\n- Week 2: Physical layer, transmission media and Ethernet\n- Week 3: Data link layer, MAC addressing, switching and ARP\n- Week 4: IPv4 addressing and subnetting\n- Week 5: VLSM and IPv6 basics\n- Week 6: Static routing and routing tables\n- Week 7: Dynamic routing protocols - distance vector and link state\n- Week 8: Midterm examination\n- Week 9: OSPF single-area operation\n- Week 10: VLANs, trunking and inter-VLAN routing\n- Week 11: Transport layer - TCP connection management and UDP\n- Week 12: Application layer - DNS, DHCP and HTTP\n- Week 13: Network troubleshooting methodology - the layered (bottom-up, top-down, divide-and-conquer) approach to fault isolation\n- Week 14: Network management fundamentals - introduction to SNMP and network monitoring concepts\n- Week 15: Network security basics - firewalls, access control lists and common threats\n- Week 16: Wireless LANs (IEEE 802.11) and course review\n\n## Assessment Breakdown\n- Quizzes: 10%\n- Assignments: 10%\n- Midterm Exam: 30%\n- Final Exam: 50%\n- Lab component assessed separately (lab reports 70%, lab exam 30%)\n\n## Recommended Texts\n- A standard undergraduate computer networking textbook (top-down approach)\n- Cisco Packet Tracer and Wireshark are used in the laboratory",
+      "truncated": false,
+      "warning": ""
+    },
+    {
+      "doc_id": "LAB1",
+      "name": "02_lab_manual.md",
+      "category": "practice",
+      "text": "SYNTHETIC DEMO DATA - written for the SkillLeak AI demo. Not a real university lab manual.\n\n# Lab Manual: EE-357L Computer Communication Networks Lab\n\nGeneral instructions: Each lab is completed in Cisco Packet Tracer unless stated otherwise. Students follow the step-by-step procedure, record the outputs shown, and submit a lab report containing screenshots and answers to the post-lab questions.\n\n## Lab 1: Introduction to Cisco Packet Tracer and Network Cabling\nObjective: Become familiar with the Packet Tracer interface and connect PCs, switches and routers using the correct cable types.\nProcedure: Place two PCs and a switch, connect them with straight-through cables, assign the given IP addresses and verify connectivity with ping.\nPost-lab: Name the cable types used and state when a crossover cable is needed.\n\n## Lab 2: IPv4 Addressing and Subnetting\nObjective: Apply subnetting to divide a given network into subnets.\nProcedure: Divide the network 192.168.10.0/24 into four equal subnets. Assign addresses to the PCs in each subnet and verify connectivity within each subnet using ping.\nPost-lab: Calculate the number of usable hosts per subnet.\n\n## Lab 3: Static Routing\nObjective: Configure static routes between three routers.\nProcedure: Build the given topology of three routers. Configure the interface IP addresses exactly as listed in Table 3.1. Enter the static routes provided in the procedure and verify end-to-end connectivity using ping and the show ip route command.\nPost-lab: Explain the meaning of each field in the routing table.\n\n## Lab 4: VLAN Configuration and Trunking\nObjective: Configure VLANs on a switch and a trunk link between two switches.\nProcedure: Create VLAN 10 and VLAN 20, assign the listed access ports, configure the trunk port and verify with show vlan brief.\nPost-lab: Explain why PCs in different VLANs cannot communicate without a router.\n\n## Lab 5: Single-Area OSPF\nObjective: Configure OSPF on three routers.\nProcedure: Enable OSPF process 1 on all routers, advertise the given networks in area 0, and verify neighbour adjacencies using show ip ospf neighbor.\nPost-lab: Compare the OSPF routing table with the static routing table from Lab 3.\n\n## Lab 6: Observing TCP with Wireshark\nObjective: Observe the TCP three-way handshake.\nProcedure: Start a Wireshark capture, open a web page in the browser, stop the capture, apply the filter tcp, and take a screenshot of the SYN, SYN-ACK and ACK packets.\nPost-lab: Write down the sequence and acknowledgement numbers shown in the screenshot.\n\n## Lab 7: DHCP and DNS Services\nObjective: Configure a DHCP server and a DNS server in Packet Tracer.\nProcedure: Configure the DHCP pool on the server with the parameters given, set PCs to obtain addresses automatically, add the DNS record for www.sample.local and verify name resolution from a PC.\nPost-lab: Describe the four messages of the DHCP process.\n\n## Lab 8: Standard and Extended Access Control Lists\nObjective: Configure ACLs to filter traffic.\nProcedure: Apply the given extended ACL on the router interface to block HTTP traffic from the 192.168.20.0/24 network and verify that the traffic is blocked.\nPost-lab: State the difference between standard and extended ACLs.",
+      "truncated": false,
+      "warning": ""
+    },
+    {
+      "doc_id": "ASM1",
+      "name": "03_assessments.md",
+      "category": "assessment",
+      "text": "SYNTHETIC DEMO DATA - written for the SkillLeak AI demo. Not a real examination paper. Questions are tagged with CLOs where the paper setter tagged them.\n\n# EE-357 Assessment Pack (Midterm, Final, Lab Exam, Quiz)\n\n## Midterm Examination (30 marks)\nQ1. (5) [CLO-1] List the seven layers of the OSI model and state one function of each layer.\nQ2. (10) [CLO-2] An organization is assigned the network 172.16.0.0/22. Design a VLSM addressing scheme for four departments needing 300, 120, 50 and 10 hosts. Show the subnet address, mask and usable range for each department.\nQ3. (5) Explain the difference between distance vector and link state routing protocols.\nQ4. (10) Using the routing table given in Figure 1, determine the exit interface for packets destined to the listed addresses and justify your answers.\n\n## Final Examination (50 marks)\nQ1. (10) [CLO-4] Explain how TCP achieves reliable delivery. Your answer should cover sequence numbers, acknowledgements and retransmission.\nQ2. (5) [CLO-5] List the steps of the bottom-up troubleshooting approach.\nQ3. (10) [CLO-6] Describe how an extended access control list filters traffic and write an ACL statement that denies Telnet traffic from host 10.1.1.5 to any destination.\nQ4. (5) What is SNMP? Name its main components.\nQ5. (10) [CLO-3] Explain the purpose of VLAN trunking and describe the role of the 802.1Q tag.\nQ6. (10) [CLO-2] Design the subnetting for a campus network with five buildings, given the requirements in Table 2, and justify the chosen prefix lengths.\n\n## Lab Examination (practical, 30% of lab marks) [CLO-3]\nTask: In Packet Tracer, build the given topology, configure static routing between two routers and configure two VLANs on the switch. The examiner checks that all PCs can ping each other.\n\n## Quiz 3 (Wireshark)\nQ1. A Wireshark screenshot of a TCP segment is shown. Identify the source port, destination port and the flags that are set.",
+      "truncated": false,
+      "warning": ""
+    },
+    {
+      "doc_id": "JD1",
+      "name": "04_job_noc_engineer.md",
+      "category": "industry",
+      "text": "SYNTHETIC DEMO DATA - fictional job description written for the SkillLeak AI demo. Not a real employer or vacancy.\n\n# Job Title: NOC Engineer (Fresh Graduate) - Sample ISP, Islamabad\n\n## Role Summary\nOur 24/7 Network Operations Centre monitors and maintains the backbone and customer access network. As a NOC Engineer you will be the first responder to network alarms and customer outages.\n\n## Responsibilities\n- Monitor network health using NMS dashboards and SNMP-based alarms, and respond to alerts within defined SLAs.\n- Troubleshoot connectivity, latency and packet-loss issues across routers and switches, isolating faults layer by layer.\n- Log, update and close incident tickets with a clear description of the fault, root cause and corrective action.\n- Escalate unresolved faults to Level-2 teams with complete diagnostic evidence.\n- Perform basic configuration changes on routers and switches (VLANs, static routes, OSPF) under supervision.\n\n## Requirements\n- BE/BS in Electrical, Telecom or Computer Engineering.\n- Strong understanding of IP addressing and subnetting.\n- Hands-on knowledge of routing and switching.\n- Ability to work in rotating shifts and communicate clearly with customers and field teams.",
+      "truncated": false,
+      "warning": ""
+    },
+    {
+      "doc_id": "JD2",
+      "name": "05_job_junior_network_engineer.md",
+      "category": "industry",
+      "text": "SYNTHETIC DEMO DATA - fictional job description written for the SkillLeak AI demo. Not a real employer or vacancy.\n\n# Job Title: Junior Network Engineer - Sample Systems Integrator, Lahore\n\n## Responsibilities\n- Configure and deploy routers, switches and firewalls for enterprise customers, including VLANs, inter-VLAN routing and OSPF.\n- Implement firewall policies and access control lists according to customer security requirements.\n- Diagnose and resolve network faults reported by customers, from cabling issues to routing problems.\n- Capture and analyse traffic with Wireshark to identify the cause of application slowness.\n- Prepare network documentation, including topology diagrams and post-implementation reports.\n\n## Requirements\n- Degree in Electrical/Computer Engineering or Computer Science.\n- CCNA-level knowledge of routing and switching.\n- Good subnetting skills.\n- Familiarity with network monitoring tools is a plus.",
+      "truncated": false,
+      "warning": ""
+    },
+    {
+      "doc_id": "JD3",
+      "name": "06_job_network_support_bank.md",
+      "category": "industry",
+      "text": "SYNTHETIC DEMO DATA - fictional job description written for the SkillLeak AI demo. Not a real employer or vacancy.\n\n# Job Title: Network Support Officer - Sample Bank, Karachi\n\n## Responsibilities\n- Provide first-line network support to 120 branches; troubleshoot branch connectivity outages and restore service quickly.\n- Monitor WAN links and network devices through the monitoring system and act on threshold alerts.\n- Record every incident in the IT service management tool and write a short incident report for outages longer than 30 minutes.\n- Maintain access control lists on branch routers in line with the bank's security policy.\n- Coordinate with telecom service providers during link failures.\n\n## Requirements\n- Bachelor's degree in Engineering or IT.\n- Working knowledge of TCP/IP, routing and switching.\n- Basic Linux command-line skills.\n- Good written and verbal communication.",
+      "truncated": false,
+      "warning": ""
+    },
+    {
+      "doc_id": "JD4",
+      "name": "07_job_field_engineer_telecom.md",
+      "category": "industry",
+      "text": "SYNTHETIC DEMO DATA - fictional job description written for the SkillLeak AI demo. Not a real employer or vacancy.\n\n# Job Title: Graduate Field Network Engineer - Sample Telecom Vendor, Islamabad\n\n## Responsibilities\n- Commission and integrate IP transport equipment at customer sites, configuring interfaces, VLANs and static routes.\n- Troubleshoot link and service faults on site using a structured fault-isolation process and confirm restoration with the NOC.\n- Use packet captures and device logs to support root-cause analysis of recurring faults.\n- Monitor performance counters and alarms during acceptance testing.\n\n## Requirements\n- BE Electrical/Telecom.\n- Solid understanding of IP networking, subnetting and routing protocols.\n- Willingness to travel to sites.",
+      "truncated": false,
+      "warning": ""
+    }
+  ],
+  "competencies": [
+    {
+      "id": "C1",
+      "orig_id": "C1",
+      "name": "Troubleshoot network connectivity faults",
+      "description": "Isolate and resolve faults layer by layer.",
+      "industry_evidence": [
+        {
+          "doc_id": "JD1",
+          "quote": "Troubleshoot connectivity, latency and packet-loss issues across routers and switches",
+          "verified": "exact"
+        },
+        {
+          "doc_id": "JD2",
+          "quote": "Diagnose and resolve network faults reported by customers",
+          "verified": "exact"
+        },
+        {
+          "doc_id": "JD3",
+          "quote": "troubleshoot branch connectivity outages and restore service quickly",
+          "verified": "exact"
+        },
+        {
+          "doc_id": "JD4",
+          "quote": "Troubleshoot link and service faults on site using a structured fault-isolation process",
+          "verified": "exact"
+        }
+      ],
+      "course_evidence": [
+        {
+          "doc_id": "SYL1",
+          "category": "syllabus",
+          "quote": "Network troubleshooting methodology - the layered (bottom-up, top-down, divide-and-conquer) approach to fault isolation",
+          "bloom_level": 2,
+          "reason": "Lecture topic only.",
+          "verified": "exact"
+        },
+        {
+          "doc_id": "ASM1",
+          "category": "assessment",
+          "quote": "List the steps of the bottom-up troubleshooting approach.",
+          "bloom_level": 1,
+          "reason": "Recall of steps, no diagnosis required.",
+          "verified": "exact"
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "orig_id": "C2",
+      "name": "Configure routing and switching",
+      "description": "Configure VLANs, static routes and OSPF.",
+      "industry_evidence": [
+        {
+          "doc_id": "JD1",
+          "quote": "Perform basic configuration changes on routers and switches (VLANs, static routes, OSPF)",
+          "verified": "exact"
+        },
+        {
+          "doc_id": "JD2",
+          "quote": "including VLANs, inter-VLAN routing and OSPF",
+          "verified": "exact"
+        },
+        {
+          "doc_id": "JD4",
+          "quote": "configuring interfaces, VLANs and static routes",
+          "verified": "exact"
+        }
+      ],
+      "course_evidence": [
+        {
+          "doc_id": "SYL1",
+          "category": "syllabus",
+          "quote": "Configure static and dynamic routing (OSPF) and VLAN-based switching on network devices.",
+          "bloom_level": 3,
+          "reason": "Stated CLO.",
+          "verified": "exact"
+        },
+        {
+          "doc_id": "LAB1",
+          "category": "practice",
+          "quote": "Enable OSPF process 1 on all routers, advertise the given networks in area 0",
+          "bloom_level": 3,
+          "reason": "Hands-on configuration.",
+          "verified": "exact"
+        },
+        {
+          "doc_id": "ASM1",
+          "category": "assessment",
+          "quote": "configure static routing between two routers and configure two VLANs on the switch",
+          "bloom_level": 3,
+          "reason": "Practical lab exam.",
+          "verified": "exact"
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "orig_id": "C3",
+      "name": "Document incidents and write incident reports",
+      "description": "Record faults, root cause and corrective action.",
+      "industry_evidence": [
+        {
+          "doc_id": "JD1",
+          "quote": "Log, update and close incident tickets with a clear description of the fault, root cause and corrective action",
+          "verified": "exact"
+        },
+        {
+          "doc_id": "JD3",
+          "quote": "write a short incident report for outages longer than 30 minutes",
+          "verified": "exact"
+        },
+        {
+          "doc_id": "JD2",
+          "quote": "Maintain the ITIL incident register for all enterprise customers",
+          "verified": "not_found"
+        }
+      ],
+      "course_evidence": []
+    }
+  ],
+  "alignment": {
+    "verifier": {
+      "status": "ok",
+      "rated": 6,
+      "requested": 6
+    },
+    "course": "EE-357 Computer Communication Networks",
+    "clos": [
+      {
+        "id": "CLO-1",
+        "doc_id": "SYL1",
+        "statement": "Explain the functions of each layer of the OSI and TCP/IP reference models.",
+        "verified": "exact",
+        "stated_level": 2,
+        "stated_level_text": "C2 (Understand)",
+        "inferred_level": null,
+        "inference_reason": "",
+        "plo": "PLO-1 Engineering Knowledge"
+      },
+      {
+        "id": "CLO-3",
+        "doc_id": "SYL1",
+        "statement": "Configure static and dynamic routing (OSPF) and VLAN-based switching on network devices.",
+        "verified": "exact",
+        "stated_level": 3,
+        "stated_level_text": "C3 (Apply)",
+        "inferred_level": null,
+        "inference_reason": "",
+        "plo": "PLO-5 Modern Tool Usage"
+      },
+      {
+        "id": "CLO-5",
+        "doc_id": "SYL1",
+        "statement": "Diagnose and resolve common connectivity faults in small routed and switched networks.",
+        "verified": "exact",
+        "stated_level": 4,
+        "stated_level_text": "C4 (Analyze)",
+        "inferred_level": null,
+        "inference_reason": "",
+        "plo": "PLO-2 Problem Analysis"
+      },
+      {
+        "id": "CLO-6",
+        "doc_id": "SYL1",
+        "statement": "Describe basic network security mechanisms including firewalls and access control lists.",
+        "verified": "exact",
+        "stated_level": 2,
+        "stated_level_text": "C2 (Understand)",
+        "inferred_level": null,
+        "inference_reason": "",
+        "plo": "PLO-1"
+      },
+      {
+        "id": "CLO-9",
+        "doc_id": "SYL1",
+        "statement": "Evaluate wireless network designs for coverage.",
+        "verified": "not_found",
+        "stated_level": null,
+        "stated_level_text": "",
+        "inferred_level": 5,
+        "inference_reason": "evaluate",
+        "plo": ""
+      }
+    ],
+    "items": [
+      {
+        "id": "A1",
+        "doc_id": "ASM1",
+        "doc_category": "assessment",
+        "label": "Midterm Q1",
+        "item_type": "exam question",
+        "quote": "List the seven layers of the OSI model and state one function of each layer.",
+        "verified": "exact",
+        "marks": 5.0,
+        "demand_level": 1,
+        "demand_reason": "Recall.",
+        "demand_level_2": 1,
+        "demand_reason_2": "fake"
+      },
+      {
+        "id": "A2",
+        "doc_id": "ASM1",
+        "doc_category": "assessment",
+        "label": "Final Q5",
+        "item_type": "exam question",
+        "quote": "Explain the purpose of VLAN trunking and describe the role of the 802.1Q tag.",
+        "verified": "exact",
+        "marks": 10.0,
+        "demand_level": 2,
+        "demand_reason": "Explain.",
+        "demand_level_2": 2,
+        "demand_reason_2": "fake"
+      },
+      {
+        "id": "A3",
+        "doc_id": "ASM1",
+        "doc_category": "assessment",
+        "label": "Lab exam",
+        "item_type": "lab exam",
+        "quote": "configure static routing between two routers and configure two VLANs on the switch",
+        "verified": "exact",
+        "marks": null,
+        "demand_level": 3,
+        "demand_reason": "Configure.",
+        "demand_level_2": 3,
+        "demand_reason_2": "fake"
+      },
+      {
+        "id": "A4",
+        "doc_id": "ASM1",
+        "doc_category": "assessment",
+        "label": "Final Q2",
+        "item_type": "exam question",
+        "quote": "List the steps of the bottom-up troubleshooting approach.",
+        "verified": "exact",
+        "marks": 5.0,
+        "demand_level": 1,
+        "demand_reason": "Recall of steps.",
+        "demand_level_2": 2,
+        "demand_reason_2": "fake"
+      },
+      {
+        "id": "A5",
+        "doc_id": "ASM1",
+        "doc_category": "assessment",
+        "label": "Final Q3",
+        "item_type": "exam question",
+        "quote": "Describe how an extended access control list filters traffic and write an ACL statement",
+        "verified": "exact",
+        "marks": 10.0,
+        "demand_level": 3,
+        "demand_reason": "Write ACL.",
+        "demand_level_2": 2,
+        "demand_reason_2": "fake"
+      },
+      {
+        "id": "A6",
+        "doc_id": "ASM1",
+        "doc_category": "assessment",
+        "label": "Final Q4",
+        "item_type": "exam question",
+        "quote": "What is SNMP? Name its main components.",
+        "verified": "exact",
+        "marks": 5.0,
+        "demand_level": 1,
+        "demand_reason": "Recall.",
+        "demand_level_2": 1,
+        "demand_reason_2": "fake"
+      },
+      {
+        "id": "A7",
+        "doc_id": "ASM1",
+        "doc_category": "assessment",
+        "label": "Invented",
+        "item_type": "exam question",
+        "quote": "Troubleshoot the broken OSPF adjacency shown in Figure 7 and justify your fix.",
+        "verified": "not_found",
+        "marks": 20.0,
+        "demand_level": 4,
+        "demand_reason": "Hallucinated item."
+      }
+    ],
+    "mappings": [
+      {
+        "clo_id": "CLO-1",
+        "item_id": "A1",
+        "basis": "explicit_tag",
+        "confidence": "high",
+        "reason": "tag"
+      },
+      {
+        "clo_id": "CLO-3",
+        "item_id": "A2",
+        "basis": "explicit_tag",
+        "confidence": "high",
+        "reason": "tag"
+      },
+      {
+        "clo_id": "CLO-3",
+        "item_id": "A3",
+        "basis": "explicit_tag",
+        "confidence": "high",
+        "reason": "tag"
+      },
+      {
+        "clo_id": "CLO-5",
+        "item_id": "A4",
+        "basis": "explicit_tag",
+        "confidence": "high",
+        "reason": "tag"
+      },
+      {
+        "clo_id": "CLO-5",
+        "item_id": "A7",
+        "basis": "content_match",
+        "confidence": "high",
+        "reason": "fake"
+      },
+      {
+        "clo_id": "CLO-6",
+        "item_id": "A5",
+        "basis": "explicit_tag",
+        "confidence": "high",
+        "reason": "tag"
+      }
+    ],
+    "missing_information": [
+      "No marks stated for the lab examination."
+    ],
+    "overrides": {
+      "clo_level": {},
+      "item_level": {},
+      "exclude": []
+    },
+    "improvements": {
+      "CLO-5": {
+        "revised_item": "Given a Packet Tracer topology with two injected faults, diagnose and fix them.",
+        "item_type": "lab exam task",
+        "marks": 10,
+        "bloom_level": 4,
+        "why_it_measures_the_clo": "Requires diagnosis.",
+        "marking_guide": [
+          {
+            "criterion": "Fault found",
+            "marks": 5
+          }
+        ],
+        "expected_student_evidence": [
+          "ping output"
+        ],
+        "_meta": {
+          "model": "Google Gemini / FAKE-TEST-FIXTURE",
+          "created_at": "2026-10-10T04:19:22",
+          "target_level": 4
+        }
+      }
+    },
+    "created_at": "2026-10-10T04:19:22",
+    "model": "Google Gemini / FAKE-TEST-FIXTURE"
+  },
+  "labs": {
+    "C1": {
+      "title": "Fault Hunt: Diagnosing a Broken Campus Network",
+      "target_competency": "Troubleshoot network connectivity faults",
+      "bloom_target": "Analyze (4)",
+      "duration_minutes": 150,
+      "tools": [
+        "Cisco Packet Tracer"
+      ],
+      "learning_outcome": "Students will isolate and correct three injected faults and justify each diagnosis with evidence.",
+      "scenario": "You are on shift in a NOC. Users report outages.",
+      "instructor_setup": [
+        "Inject a wrong mask, a missing route and a VLAN mismatch."
+      ],
+      "student_tasks": [
+        "Reproduce the fault",
+        "Isolate the layer",
+        "Fix and verify"
+      ],
+      "evidence_to_submit": [
+        "Incident ticket for each fault"
+      ],
+      "rubric": [
+        {
+          "criterion": "Fault isolation",
+          "points": 50,
+          "excellent": "a",
+          "satisfactory": "b",
+          "needs_improvement": "c"
+        },
+        {
+          "criterion": "Incident ticket",
+          "points": 50,
+          "excellent": "a",
+          "satisfactory": "b",
+          "needs_improvement": "c"
+        }
+      ],
+      "how_it_closes_gap": "Students must diagnose, not list steps.",
+      "assessment_variant": "Given show-command outputs, identify the fault.",
+      "_meta": {
+        "competency_id": "C1",
+        "model": "Google Gemini / FAKE-TEST-FIXTURE",
+        "created_at": "2026-10-10T04:19:22",
+        "revised_with_feedback": false
+      },
+      "review": {
+        "status": "Pending review",
+        "note": ""
+      }
+    }
+  },
+  "student_packs": {
+    "C1": {
+      "skill": "Troubleshoot network connectivity faults",
+      "why_it_matters": "Postings ask for it.",
+      "exercise_title": "Break and fix",
+      "tools": [
+        "Packet Tracer"
+      ],
+      "time_needed": "2 hours",
+      "steps": [
+        "Build",
+        "Break",
+        "Fix"
+      ],
+      "expected_output": [
+        "Working network"
+      ],
+      "self_check": [
+        "I can isolate a fault by layer"
+      ],
+      "next_steps": [
+        "Try GNS3"
+      ],
+      "_meta": {
+        "competency_id": "C1",
+        "model": "Google Gemini / FAKE-TEST-FIXTURE",
+        "created_at": "2026-10-10T04:19:22"
+      }
+    }
+  }
+}

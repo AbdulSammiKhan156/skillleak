@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkillLeak AI - Curriculum evidence for engineering education</title>
+<meta name="description" content="SkillLeak AI checks whether a course's exams actually test what its learning outcomes promise, and whether the course covers the skills employers ask for.">
+<style>
+  /* ---- EDIT THESE TWO LINKS AFTER DEPLOYING (see the <script> at the bottom) ---- */
+  :root{
+    --ink:#13232b; --muted:#52616b; --teal:#0e4d4f; --teal2:#0e7c7b; --amber:#f2a541; --red:#c8394b; --green:#2e8b57;
+    --bg:#ffffff; --soft:#eef4f3; --line:#d9e4e2; --card:#f7faf9;
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+  a{color:var(--teal2)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  header{position:sticky;top:0;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:5}
+  nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-weight:800;font-size:20px;color:var(--teal);text-decoration:none}
+  .navlinks a{margin-left:18px;color:var(--muted);text-decoration:none;font-size:15px}
+  .navlinks a:hover{color:var(--teal)}
+  .btn{display:inline-block;padding:12px 20px;border-radius:10px;font-weight:700;text-decoration:none;border:2px solid var(--teal2)}
+  .btn.primary{background:var(--teal2);color:#fff}
+  .btn.ghost{color:var(--teal2);background:#fff}
+  .btn.disabled{opacity:.45;pointer-events:none}
+  .hero{background:var(--teal);color:#fff;padding:72px 0 64px}
+  .hero h1{font-family:Cambria,Georgia,serif;font-size:clamp(34px,5vw,54px);line-height:1.1;margin:0 0 16px}
+  .hero p.lead{font-size:clamp(17px,2.2vw,21px);max-width:760px;color:#d8ecea;margin:0 0 28px}
+  .hero .btn.ghost{background:transparent;color:#fff;border-color:#fff}
+  .hero .tag{display:inline-block;background:rgba(255,255,255,.12);padding:4px 12px;border-radius:999px;font-size:13px;margin-bottom:18px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px}
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  section.alt{background:var(--soft)}
+  h2{font-family:Cambria,Georgia,serif;font-size:clamp(26px,3.4vw,36px);color:var(--teal);margin:0 0 10px}
+  .sub{color:var(--muted);max-width:760px;margin:0 0 32px;font-size:17px}
+  .grid{display:grid;gap:18px}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  section.alt .card{background:#fff}
+  .card h3{margin:0 0 6px;font-size:18px;color:var(--teal)}
+  .card p{margin:0;color:var(--muted)}
+  .num{font-family:Cambria,Georgia,serif;font-size:44px;font-weight:700;line-height:1}
+  .chip{display:inline-block;padding:3px 10px;border-radius:8px;font-size:13px;font-weight:700;color:#fff}
+  .chip.teal{background:var(--teal2)} .chip.red{background:var(--red)} .chip.amber{background:var(--amber);color:var(--ink)} .chip.green{background:var(--green)}
+  .quote{border-left:4px solid var(--teal2);background:#fff;padding:10px 14px;border-radius:0 8px 8px 0;font-style:italic;margin:8px 0}
+  .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;counter-reset:s}
+  .step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;position:relative}
+  .step::before{counter-increment:s;content:counter(s);position:absolute;top:-12px;left:16px;background:var(--amber);color:var(--ink);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px}
+  .step b{display:block;color:var(--teal);margin:6px 0 4px}
+  .step .who{font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--teal2);text-transform:uppercase}
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--line);font-size:15px}
+  th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--soft);color:var(--teal);font-size:13px;text-transform:uppercase;letter-spacing:.03em}
+  .note{font-size:13px;color:var(--muted);margin-top:10px}
+  .formula{font-family:ui-monospace,Consolas,monospace;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0}
+  ul.clean{padding-left:18px;margin:8px 0} ul.clean li{margin:4px 0}
+  .example{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+  footer{padding:36px 0;color:var(--muted);font-size:14px}
+  @media (max-width:700px){.navlinks a:not(.keep){display:none}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap"><nav>
+  <a class="brand" href="#">SkillLeak AI</a>
+  <div class="navlinks">
+    <a href="#problem">Problem</a><a href="#how">How it works</a><a href="#example">Example</a>
+    <a href="#features">Features</a><a href="#trust">Trust</a><a class="keep" href="#links">Try it</a>
+  </div>
+</nav></div></header>
+
+<div class="hero"><div class="wrap">
+  <span class="tag">AICON'26 · Build With AI · EdTech &amp; Workforce</span>
+  <h1>A course outcome is a promise.<br>An assessment is evidence.</h1>
+  <p class="lead">SkillLeak AI checks whether a course's exams actually test what its learning outcomes promise, and whether the course covers the skills employers ask for. Every finding comes with its evidence, and faculty make the final call.</p>
+  <div class="cta">
+    <a class="btn primary" data-link="app" href="#">Open the live app</a>
+    <a class="btn ghost" data-link="github" href="#">View the code</a>
+  </div>
+</div></div>
+
+<section id="problem"><div class="wrap">
+  <h2>The problem</h2>
+  <p class="sub">Engineering programmes in Pakistan run Outcome-Based Education. Every Course Learning Outcome (CLO) has a cognitive level, C1 Remember to C6 Create, and course files must show that assessments measure it. That cross-check is done by hand, so mismatches slip through.</p>
+  <div class="grid g3">
+    <div class="card"><h3>Promises vs evidence</h3><p>A CLO can promise "diagnose faults" (C4) while the only question tagged to it asks students to list steps (C1).</p></div>
+    <div class="card"><h3>Numbers that mislead</h3><p>Such a CLO can still be reported as attained, because everyone passes a recall question.</p></div>
+    <div class="card"><h3>Employers notice</h3><p>3 of the 4 public Pakistani network-engineering postings we sourced explicitly ask candidates to troubleshoot.</p></div>
+  </div>
+</div></section>
+
+<section id="how" class="alt"><div class="wrap">
+  <h2>How it works</h2>
+  <p class="sub">The AI does the reading. Code does the checking. Faculty make the decision.</p>
+  <div class="flow">
+    <div class="step"><span class="who">Faculty</span><b>Upload</b>Course outline with CLOs, lab manual, exam papers, marks sheet, job postings.</div>
+    <div class="step"><span class="who">AI</span><b>Extract</b>Every CLO, its level and PLO, and every exam question with its marks.</div>
+    <div class="step"><span class="who">AI × 2</span><b>Rate</b>What each question makes a student do (C1-C6): once with the CLO, once blind.</div>
+    <div class="step"><span class="who">Code</span><b>Verify &amp; decide</b>Quotes must exist in the source. Fixed rules give each CLO a finding.</div>
+    <div class="step"><span class="who">Faculty</span><b>Act</b>Correct any rating, generate an aligned question or lab, export the course-file pack.</div>
+  </div>
+</div></section>
+
+<section id="example"><div class="wrap">
+  <h2>Worked example</h2>
+  <p class="sub">From the synthetic demo course EE-357 Computer Communication Networks, written in the style of a Pakistani OBE course file. In the app, the levels below are rated live by the AI.</p>
+  <div class="example">
+    <div class="card">
+      <p><span class="chip teal">CLO-5 · C4 Analyze</span></p>
+      <div class="quote">"Diagnose and resolve common connectivity faults in small routed and switched networks."</div>
+      <p style="margin-top:14px"><span class="chip red">Final Q2 · 5 marks · C1 Remember</span></p>
+      <div class="quote">"List the steps of the bottom-up troubleshooting approach."</div>
+      <p style="margin-top:14px"><span class="chip amber">Finding: Potential mismatch · high severity</span></p>
+      <p class="note">Both AI ratings sit below the CLO's stated level. Aligned-mark share = 0 of 5 marks.</p>
+    </div>
+    <div class="card">
+      <div class="num" style="color:var(--red)">100%</div>
+      <p>of the 40 synthetic students reach the attainment threshold for CLO-5 on the demo marks sheet.</p>
+      <p style="margin-top:12px"><span class="chip amber">Potential attainment-validity concern</span></p>
+      <p class="note">Attained under the configured thresholds, but the supplied evidence reaches only C1-C2 while the CLO states C4. It's a prompt to check whether the CLO is assessed elsewhere, not proof.</p>
+      <p style="margin-top:12px"><span class="chip green">Suggested fix</span></p>
+      <p>An AI-drafted lab-exam task asks students to diagnose injected faults in a Packet Tracer topology, with a marking guide. Faculty approve or edit it.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="features" class="alt"><div class="wrap">
+  <h2>What the app does</h2>
+  <p class="sub">Nine tabs in one workflow, from finding a gap to fixing it.</p>
+  <div class="grid g3">
+    <div class="card"><h3>CLO alignment</h3><p>A finding for every CLO, with the quoted questions, marks, both AI ratings and an aligned-mark share.</p></div>
+    <div class="card"><h3>Attainment &amp; PLO</h3><p>Attainment from a marks sheet, validity flags, and PLO evidence coverage for the course.</p></div>
+    <div class="card"><h3>Industry gaps</h3><p>Taught / practised / assessed coverage against skills quoted from real postings.</p></div>
+    <div class="card"><h3>Gap-to-Lab</h3><p>A practical lab and 100-point rubric for a gap, approved by a teacher.</p></div>
+    <div class="card"><h3>Student Mode</h3><p>A self-practice plan with free tools such as Packet Tracer and Wireshark.</p></div>
+    <div class="card"><h3>Quick check</h3><p>Type any CLO and question and get a two-rater verdict in seconds.</p></div>
+    <div class="card"><h3>Faculty corrections</h3><p>Override any level or mapping; findings recompute instantly.</p></div>
+    <div class="card"><h3>Validation</h3><p>Benchmark the AI rater against a keyword baseline on a public labelled set.</p></div>
+    <div class="card"><h3>Exports</h3><p>A Markdown report and an Excel course-file pack.</p></div>
+  </div>
+</div></section>
+
+<section id="trust"><div class="wrap">
+  <h2>Why you can trust the output</h2>
+  <p class="sub">LLMs misjudge cognitive level, often by one level. SkillLeak is designed around that.</p>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Rules, not vibes</h3>
+      <ul class="clean">
+        <li><b>Potential mismatch</b> only if <i>both</i> AI ratings are below the CLO level</li>
+        <li><b>Needs review</b> if the ratings straddle the level, the level is only inferred, or the aligned-mark share is under 50%</li>
+        <li>Every AI quote is checked against the source; invented ones are rejected</li>
+      </ul>
+      <div class="formula">aligned-mark share = marks at or above CLO level ÷ marks linked to the CLO</div>
+    </div>
+    <div class="card">
+      <h3>Measured, with caveats</h3>
+      <p><span class="num" style="font-size:34px;color:var(--teal2)">62.7%</span> exact accuracy for a keyword baseline we measured on a public 600-question labelled set (73.8% within one level). The labels' annotation provenance is undocumented.</p>
+      <p style="margin-top:10px">A separate published study reports zero-shot LLMs at about 72-73% on a similar set (<a href="https://arxiv.org/abs/2511.10903">arXiv:2511.10903</a>). That's why SkillLeak flags disagreement and keeps faculty in charge.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>Impact</h2>
+  <p class="sub">Built for the people who sign the course file.</p>
+  <table>
+    <tr><th>Who</th><th>What they get</th></tr>
+    <tr><td>Faculty</td><td>Which questions miss their CLO level, plus an aligned replacement</td></tr>
+    <tr><td>OBE / QEC coordinators</td><td>A CLO × question matrix, attainment validity and PLO evidence in one Excel pack</td></tr>
+    <tr><td>Heads of department</td><td>Weak PLOs and industry gaps across a course, before review visits</td></tr>
+    <tr><td>Students</td><td>A practice plan for a skill employers ask for</td></tr>
+  </table>
+  <p class="note">Supports SDG 4 (Quality Education) and SDG 8 (Decent Work). Adoption path: one department pilot → every course in a programme → a programme-level PLO view.</p>
+</div></section>
+
+<section id="links"><div class="wrap">
+  <h2>Try it</h2>
+  <p class="sub">The live app includes the synthetic demo course, so no files are needed.</p>
+  <div class="cta">
+    <a class="btn primary" data-link="app" href="#">Open the live app</a>
+    <a class="btn ghost" data-link="github" href="#">GitHub repository</a>
+    <a class="btn ghost" href="SkillLeak_AICON26.pptx" download>Download the deck</a>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Honest limits &amp; disclosure</h2>
+  <ul class="clean">
+    <li>Decision support, <b>not</b> a PEC/HEC accreditation verdict.</li>
+    <li>AI ratings can be wrong: disagreements are flagged, reasons are shown, and faculty can override.</li>
+    <li>The demo course and marks are synthetic and labelled. The 4 job postings are real public listings (closed) with source links; that's a small sample, not national demand.</li>
+    <li>Built during AICON'26 (9-10 Oct 2026) with Claude as an AI coding assistant. Runtime AI: the LLM API selected in the app. Open-source libraries: Streamlit, PyMuPDF, Plotly, pandas.</li>
+  </ul>
+</div></section>
+
+<footer><div class="wrap">SkillLeak AI · Abdul Sammi Khan · NUST SEECS · AICON'26 Build With AI</div></footer>
+
+<script>
+  // ===== Paste your two deployed links here =====
+  const LINKS = {
+    app: "",     // e.g. "https://skillleak.streamlit.app"
+    github: ""   // e.g. "https://github.com/<your-username>/skillleak"
+  };
+  document.querySelectorAll("[data-link]").forEach(a => {
+    const url = LINKS[a.dataset.link];
+    if (url) { a.href = url; a.target = "_blank"; a.rel = "noopener"; }
+    else { a.classList.add("disabled"); a.title = "Link not set yet"; }
+  });
+</script>
+</body>
+</html>

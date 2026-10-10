@@ -1,0 +1,140 @@
+{
+  "rater": "keyword",
+  "label": "Keyword baseline (first Bloom verb)",
+  "per_level": 100,
+  "seed": 7,
+  "source": "BloomNet dataset (github.com/macabdul9/BloomNet, MIT licence), 600 questions, 100 per level",
+  "created_at": "2026-10-10T04:14:34",
+  "n": 600,
+  "answered": 600,
+  "accuracy": 0.6266666666666667,
+  "within_one": 0.7383333333333333,
+  "macro_f1": 0.6360956682938901,
+  "confusion": [
+    [
+      78,
+      19,
+      1,
+      0,
+      1,
+      1
+    ],
+    [
+      11,
+      84,
+      4,
+      1,
+      0,
+      0
+    ],
+    [
+      9,
+      20,
+      63,
+      6,
+      0,
+      2
+    ],
+    [
+      2,
+      55,
+      1,
+      41,
+      0,
+      1
+    ],
+    [
+      10,
+      28,
+      11,
+      1,
+      47,
+      3
+    ],
+    [
+      7,
+      17,
+      9,
+      2,
+      2,
+      63
+    ]
+  ],
+  "examples": [
+    {
+      "text": "How much time did he took to build a house",
+      "gold": 1,
+      "pred": 6
+    },
+    {
+      "text": "Draw the block diagram of the central processing unit",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "How many kilometers from your home to the university",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "How many instructions in the instruction set of RISC computer?",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "Draw the basic outline of a page of notes using the Cornell Method?",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "How many years does this animal live?",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "How much did he pay for his car",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "How much is your weight",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "Recite the the Gaussian law",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "How many loop statement available in c++?",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "in which countries is arabic language spoken",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "Recite the poem \"Auto Wreck\".",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "How much water does an elephant drink",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "Recite a policy of immigration in Europe .",
+      "gold": 1,
+      "pred": 2
+    },
+    {
+      "text": "How much data can be stored in the cach memory",
+      "gold": 1,
+      "pred": 2
+    }
+  ]
+}
